@@ -1,20 +1,20 @@
 ### Schema
 
-CREATE DATABASE team_db;
-USE team_db;
+CREATE DATABASE taqueria_db;
+USE taqueria_db;
 
-CREATE TABLE players(
+CREATE TABLE tacos(
 id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-name varchar(255) NOT NULL,
-position varchar(255) NOT NULL,
-starting BOOLEAN DEFAULT false
+filling varchar(255) NOT NULL,
+cost decimal (10,2) NOT NULL,
+ordered BOOLEAN DEFAULT false
 );
-INSERT INTO players (name, position, starting) VALUES ('Matt Ryan','QB',true);
-INSERT INTO players (name, position) VALUES ('Tom Brady','QB');
-INSERT INTO players (name, position, starting) VALUES ('Zeke Elliott','RB',true);
-INSERT INTO players (name, position, starting) VALUES ('Christian McCaffery','RB',true);
-INSERT INTO players (name, position) VALUES ('Austin Ekeler','RB');
-INSERT INTO players (name, position, starting) VALUES ('Julio Jones','WR',true);
-INSERT INTO players (name, position, starting) VALUES ('Chris Godwin','WR',true);
-INSERT INTO players (name, position) VALUES ('Kenny Golladay','WR');
-INSERT INTO players (name, position, starting) VALUES ('George Kittle','TE',true);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Carnitas',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Carne Asada',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Pollo Asado',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Al Pastor',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Barbacoa',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Camarones',3,false);
+INSERT INTO tacos (filling, cost, ordered) VALUES ('Chorizo',3,false);
+
+

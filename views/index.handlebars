@@ -1,0 +1,38 @@
+<h1>Tacos!</h1>
+
+<h2>Menu!</h2>
+
+<ul>
+  {{#each tacos}}
+    {{#unless ordered}}
+      {{> tacos/taco-block ordered=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Your Order!</h2>
+
+<ul>
+  {{#each tacos}}
+    {{#if ordered}}
+      {{> tacos/taco-block ordered=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Filling!</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ta">Taco Filling:</label>
+    <input type="text" id="ta" name="filling">
+  </div>
+
+  <div class="form-group">
+    <label for="ordered">Order?</label><br>
+    <input type="radio" name="order" value="1" checked> Ordered!<br>
+    <input type="radio" name="order" value="0"> Available
+  </div>
+
+  <button type="submit">Add Filling</button>
+</form>
