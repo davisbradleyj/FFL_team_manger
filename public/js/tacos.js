@@ -1,15 +1,15 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 console.log("tacos running")
 $(function() {
-    $(".change-order").on("submit", function(event) {
+    $(".change-order").on("click", function(event) {
       console.log("Change Order Click")
       var id = $(this).data("id");
       var newOrder = $(this).data("neworder");
   
       var newOrderState = {
-        ordered: newOrder
+        ordered: !newOrder
       };
-  
+      console.log(newOrder)
       // Send the PUT request.
       $.ajax("/api/tacos/" + id, {
         type: "PUT",
@@ -29,7 +29,9 @@ $(function() {
       console.log("Create new filling click")
       var newTaco = {
         filling: $("#ta").val().trim(),
+        cost: $("#co").val().trim(),
         order: $("[name=order]:checked").val().trim()
+
       };
   
       // Send the POST request.

@@ -4,6 +4,10 @@ body {
     height: 700px;
 }
 
+.titleColor {
+    color: rgb(241, 100, 100) !important;
+}
+
 .tacoPad {
     padding-left: 50px;
     margin-left: 50px;

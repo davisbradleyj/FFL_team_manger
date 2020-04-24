@@ -19,7 +19,7 @@ router.post("/api/tacos", function(req,res){
     console.log(req.body)
     taco.create(
         ["filling","cost","ordered",],
-        [req.body.filling,req.body.cost,req.body.ordered], 
+        [req.body.filling,parseFloat(req.body.cost),req.body.ordered], 
         function(result) {
         res.json({ id: result.insertId });
         console.log("inside post test")
@@ -32,7 +32,7 @@ router.put("/api/tacos/:id", function(req,res){
     taco.update({ 
         ordered: req.body.ordered }, 
         condition, function(result) {
-        if (result.changedRows == 0) {
+        if (result.changedRows === 0) {
             // no changed rows means the ID does not exist
             return res.status(404).end();
         } else {
@@ -43,7 +43,7 @@ router.put("/api/tacos/:id", function(req,res){
 router.delete("/api/tacos/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     taco.delete(condition, function (result){
-        if (result.affectedRows == 0) {
+        if (result.affectedRows === 0) {
             return res.status(404).end();
         } else { 
             res.status(200).end();

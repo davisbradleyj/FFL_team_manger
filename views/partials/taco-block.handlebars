@@ -1,8 +1,8 @@
 <li>
 	{{filling}}
 
-	<button class="change-order has-background-warning onePx" data-id="{{id}}" data-neworder="{{order}}">
-		{{#if order}}Order!{{else}}No Thanks!{{/if}}
+	<button class="change-order has-background-warning onePx" data-id={{id}} data-neworder={{ordered}}>
+		{{#if ordered}}Order!{{else}}No Thanks!{{/if}}
 	</button>
 
 	<button class="delete-taco has-background-warning onePx" data-id="{{this.id}}">DELETE!</button>
