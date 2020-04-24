@@ -1,38 +1,67 @@
-<h1>Tacos!</h1>
-
-<h2>Menu!</h2>
-
-<ul>
-  {{#each tacos}}
-    {{#unless ordered}}
-      {{> tacos/taco-block ordered=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Your Order!</h2>
-
-<ul>
-  {{#each tacos}}
-    {{#if ordered}}
-      {{> tacos/taco-block ordered=true}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Filling!</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ta">Taco Filling:</label>
-    <input type="text" id="ta" name="filling">
+<header class="hero is-success is-bold has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-1 has-text-danger">
+        GENERAL VILLA'S TAQUERIA
+      </h1>
+    </div>
   </div>
+</header>
 
-  <div class="form-group">
-    <label for="ordered">Order?</label><br>
-    <input type="radio" name="order" value="1" checked> Ordered!<br>
-    <input type="radio" name="order" value="0"> Available
+<section>
+  <br>
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-centered">
+        <h2 class="has-text-centered is-size-3">Menu</h2>
+        <br/>
+        <div class="tile tacoPad">
+          <ul>
+            {{#each tacos}}
+            {{#if ordered}}
+            {{> taco-block ordered=true}}
+            {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <div class="column is-half is-centered">
+        <h2 class="has-text-centered is-size-3"> Your Order</h2>
+        <br/>
+        <div class="tile tacoPad">
+          <ul>
+            {{#each tacos}}
+            {{#unless ordered}}
+            {{> taco-block ordered=false}}
+            {{/unless}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <button type="submit">Add Filling</button>
-</form>
+<hr/>
+
+<section>
+  <div class="columns is-centered">
+    <div class="column is-one-fifth is-centered">
+      <h2 class="is-size-4">Add a Filling!</h2>
+      <form class="create-form">
+        <div class="form-group">
+          <label for="ta">Taco Filling:</label>
+          <input type="text" id="ta" name="filling">
+        </div>
+
+        <div class="form-group">
+          <label for="ordered">Order?</label><br>
+          <input type="radio" name="order" value="1" checked> Ordered! 
+          <input type="radio" name="order" value="0"> Available
+        </div>
+
+        <button class="has-background-warning" type="submit">Add Filling</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "bulma": "^0.8.2",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.3",
     "mysql": "^2.18.1"

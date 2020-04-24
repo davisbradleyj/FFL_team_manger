@@ -23,10 +23,10 @@ With this application, the challenge is to design and build a solution that will
   * [Questions](#Questions)
 
 ## Technologies Used
-- HTML - 
-- CSS - 
+- HTML - used to create elements on the DOM
+- CSS - used to add style to the deployed page
 - JavaScript - used to create the logic controlling the 
-- Bulma - 
+- Bulma - aid in the implementation of syling elements
 - jQuery - library supplement to JavaScript controlling application logic
 - Node.js - runtime environment which executes the JS code
 - Express - framework for Node.js to create a server
@@ -34,7 +34,7 @@ With this application, the challenge is to design and build a solution that will
 - MySQL Workbench - database used for storing and calling information on commandline application
 - Git - version control system to track changes to source code
 - GitHub - hosts repository that can be deployed to GitHub Pages
-- Heroku - 
+- Heroku - host for deployed application
 
 ## Summary
 

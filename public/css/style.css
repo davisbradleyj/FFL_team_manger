@@ -1,0 +1,16 @@
+
+body {
+    background-color: lightgoldenrodyellow;
+    height: 700px;
+}
+
+.tacoPad {
+    padding-left: 50px;
+    margin-left: 50px;
+    padding-right: 50px;
+    margin-left: 50px;
+}
+
+.onePx {
+    margin-bottom: 2px;
+}
