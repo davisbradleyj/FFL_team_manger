@@ -4,6 +4,7 @@ $(function() {
     $(".change-order").on("click", function(event) {
       console.log("Change Order Click")
       var id = $(this).data("id");
+      var cost = $(this).data("cost");
       var newOrder = $(this).data("neworder");
   
       var newOrderState = {
@@ -31,7 +32,6 @@ $(function() {
         filling: $("#ta").val().trim(),
         cost: $("#co").val().trim(),
         order: $("[name=order]:checked").val().trim()
-
       };
   
       // Send the POST request.
@@ -47,7 +47,7 @@ $(function() {
       );
     });
   
-    $(".delete-taco").on("submit", function(event) {
+    $(".delete-taco").on("click", function(event) {
       console.log("delete taco click")
       var id = $(this).data("id");
       // Send the DELETE request.
