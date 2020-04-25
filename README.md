@@ -99,7 +99,9 @@ Similarly, the "POST", "UPDATE", and "DELETE" routes follow similar structiure t
           // Reload the page to get the updated list
           location.reload();
 ```
-This example is the code which allows a new taco filling to be created and saved to the application.  In it, you can specify the filling and cost on the page, along with whether you want to immediately order the item or just add it to the menu.  Though, if you want it, and its not on the menu, expect it to be put right into your order.  No sense, asking for something that you won't receive, right?  And now to see this application in action...
+This example is the code which allows a new taco filling to be created and saved to the application.  In it, you can specify the filling and cost on the page, along with whether you want to immediately order the item or just add it to the menu.  Though, if you want it, and it is not on the menu, you should expect it to be put right into your order.  No sense asking for something that you will not receive, right?  
+
+Let's see this application in action...
 
 <img src="https://github.com/davisbradleyj/taqueria/blob/master/public/Gen-Villa-Taqueria.gif">
 
