@@ -30,30 +30,88 @@ With this application, the challenge is to design and build a solution that will
 - jQuery - library supplement to JavaScript controlling application logic
 - Node.js - runtime environment which executes the JS code
 - Express - framework for Node.js to create a server
-- Express Handlebars
+- Handlebars - a template language within Express that aids in renders HTML
 - MySQL Workbench - database used for storing and calling information on commandline application
 - Git - version control system to track changes to source code
 - GitHub - hosts repository that can be deployed to GitHub Pages
 - Heroku - host for deployed application
 
 ## Summary
+I found this task to be a bit more challenging from a technical perspective as I feel like I wrote more pages of code than ever before.  Not that it was a significant deviation from the activities we were introduced to this week, but I wanted to be sure I understood all the routes being developed, and had a 'good' grasp of Model-View-Controller architecture.  Understanding the interplay between control-model-orm as the engine which will drive Sequelize should be critical going forward.  Being said, let's have a look at how the "Get" routes work along the MVC pathways:
 
+`GET" - controller/tacoControl.js`
+```
+router.get("/", function(req,res){
+    taco.all(function(data){
+        var hbsObject = {
+            tacos: data
+        };
+        // console.log(hbsObject);
+        res.render("index",hbsObject);
+    });
+});
+```
+The "taco" variable is a require method pointing to the /models/taco.js file, allowing data to be passed from a callback function within the taco.js file.
+
+`GET - model/taco.js`
+```
+var taco = {
+    all: function(cb) {
+        orm.all("tacos", function(res) {
+            cb(res);
+```
+Similar to "taco" above, here the "orm" variable is another require method, pointing to the c/onfig/orm.js file, also allowing information to be called back from the orm.
+
+`GET - config/orm.js`
+```
+var orm = {
+    all: function(tableInput, cb) {
+      var queryString = "SELECT * FROM " + tableInput + ";";
+      connection.query(queryString, function(err, result) {
+        if (err) {
+          throw err;
+        }
+        cb(result);
+      });
+```
+This code is the sql query which gets all the database information from the tacos database table, and is called back by the previous function to be populated in the assorted handlebars files which make up the front-end of the the application.
+
+Similarly, the "POST", "UPDATE", and "DELETE" routes follow similar structiure to obtain data from the sql database to render information to the front-end, however, the information being passed through is reliant on the public/js/tacos.js file to allow for the behaviours written into that file to be executed:
 
 ```
-Code Block
+    $(".create-form").on("submit", function(event) {
+      // Make sure to preventDefault on a submit event.
+      event.preventDefault();
+      console.log("Create new filling click")
+      var newTaco = {
+        filling: $("#ta").val().trim(),
+        cost: $("#co").val().trim(),
+        order: $("[name=order]:checked").val().trim()
+      };
+  
+      // Send the POST request.
+      $.ajax("/api/tacos", {
+        type: "POST",
+        data: newTaco
+      }).then(
+        function() {
+          console.log("added a new filling");
+          // Reload the page to get the updated list
+          location.reload();
 ```
+This example is the code which allows a new taco filling to be created and saved to the application.  In it, you can specify the filling and cost on the page, along with whether you want to immediately order the item or just add it to the menu.  Though, if you want it, and its not on the menu, expect it to be put right into your order.  No sense, asking for something that you won't receive, right?  And now to see this application in action...
 
+<img src="https://github.com/davisbradleyj/taqueria/blob/master/public/Gen-Villa-Taqueria.gif">
 
-```
-Code Block
-```
+## Learning-Points
 
-<img src="https://github.com/davisbradleyj/taqueria/blob/master/assets/.gif">
+Callbacks definitely twisted my brain in all sorts of knots, as did attempting to manage the assorted routes and paths being traversed by all the calls and functions that would allow this project to be deployed successfully.  In some of the paired programming lessons, it became a good learning experience (and practice) explaining how all the requests would be passed from control to model to orm, then how the callbacks would be traversed back up the chain.
 
+I encountered some major issues with getting my front-end javascript and styling to render to the page.  On the advice of my tutor, I set my code aside for the night.  Upon starting fresh the next morning, everything seemed to work.  I did not change anything.  Guess the trick of turning off a computer, and restarting worked. Again.
 
-## Learning Points
+The last bit of challenge was determining why some of the routes were not behaving as expected.  With assistance from Mr. Kerwin Hy and Ms. Mahi Gunasekaran, I was able to remedy these issues.  An overarching theme I have found is that writing code is just like writing anything else... sometimes another set of eyes (acting as an editor or otherwise) can be instrumental in finding those small mistakes one is missing.
 
-Callbacks definitely twisted my brain in all sorts of knots, as did attempting to manage the assorted routes and paths being traversed by all the assorted calls and functions that would allow this project to be deployed successfully.
+Also, I think it is time I invest in a rubber duck.
 
 ## License
 
